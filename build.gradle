@@ -26,6 +26,7 @@ repositories {
 ext {
     set('springCloudVersion', "2025.0.0")
     set('testcontainersVersion', "1.21.3")
+    set('testKeycloakVersion', "3.3.1")
 }
 
 dependencies {
@@ -34,6 +35,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.cloud:spring-cloud-starter-config'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
     implementation 'org.springframework.retry:spring-retry'
     implementation "org.flywaydb:flyway-database-postgresql"
 
@@ -42,7 +44,11 @@ dependencies {
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.boot:spring-boot-starter-webflux'
+    testImplementation 'org.testcontainers:junit-jupiter'
     testImplementation 'org.testcontainers:postgresql'
+    testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation "com.github.dasniko:testcontainers-keycloak:${testKeycloakVersion}"
+
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
